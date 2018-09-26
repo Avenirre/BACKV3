@@ -26,6 +26,7 @@ public class CVactivity {
 	@Column(name = "description", length = 255)
 	private String description;
 
+	// todo probably better to use some Date object instead of Integer
 	@Column(name = "year_start")
 	private Integer yearStart;
 

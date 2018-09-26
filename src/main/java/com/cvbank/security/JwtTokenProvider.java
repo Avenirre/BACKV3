@@ -48,6 +48,9 @@ public class JwtTokenProvider {
         try {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
             return true;
+            //todo exceptions which are the siblings as three below
+            // can be simplified like the following:
+            // catch(SignatureException | MalformedJwtException | ExpiredJwtException ex) {...}
         } catch (SignatureException ex) {
             logger.error("Invalid JWT signature");
         } catch (MalformedJwtException ex) {
@@ -56,6 +59,9 @@ public class JwtTokenProvider {
             logger.error("Expired JWT token");
         } catch (UnsupportedJwtException ex) {
             logger.error("Unsupported JWT token");
+            //todo it's a bad practice to catch runtime exceptions
+            // if you suddenly see one of them - this is a lack of validation
+            // somewhere upper in stack of calls
         } catch (IllegalArgumentException ex) {
             logger.error("JWT claims string is empty.");
         }

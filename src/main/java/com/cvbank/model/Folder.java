@@ -30,6 +30,7 @@ public class Folder {
     private Long profileId;
 
     public void addCV(CV theCV) {
+        //todo the list of cvs can be initialized when it declared
         if (cv == null) {
             cv = new ArrayList<>();
         }

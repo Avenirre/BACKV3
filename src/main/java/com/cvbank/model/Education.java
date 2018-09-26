@@ -15,6 +15,7 @@ public class Education {
     private Long id;
     private String institution;
     private String degree;
+    // todo probably better to use some Date object instead of Integer
     private Integer yearEnd;
     private String location;
     private String note;

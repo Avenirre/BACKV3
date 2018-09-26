@@ -42,6 +42,8 @@ public class CVRestController {
     @Autowired
     private SkillsRepository skillsRepository;
 
+    // it's better to create a separate util class
+    // and put it there
     public static <T> List<T> toList(Optional<T> option) {
         if (option.isPresent())
             return Collections.singletonList(option.get());
@@ -66,9 +68,12 @@ public class CVRestController {
 
         if (roles.get(0).toString().equals(Profile.Type.CANDIDATE.name())) {
 
+            // todo use a logger for this purpose, not System.out.println()
             System.out.println(profileRepository.findByUsername(request.getUserPrincipal().getName()));
+            // todo it's better to give a readable names for variables
             Long l = profileRepository.findByUsername(request.getUserPrincipal().getName()).getId();
 
+            // todo why it is here?
             CVRepository.findCVByProfileId(l);
 
             resp = new ResponseSuccessList(CVRepository.findCVByProfileId(l));

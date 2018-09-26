@@ -13,6 +13,9 @@ import java.util.List;
 @NoArgsConstructor
 public class CV {
 
+    // todo @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    // is more preferable but if MySQL doesn't support it
+    // than ok
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
@@ -29,6 +32,8 @@ public class CV {
 	private String residence;
 	private Date birthday;
 	private String linkedin;
+    //todo it's strictly recommended to use "camelCase" notation to name variables
+    // https://www.oracle.com/technetwork/java/codeconvtoc-136057.html
 	private String position_preference;
 	private String github;
 	private String recommendations;
@@ -49,6 +54,8 @@ public class CV {
 
     //@JsonBackReference
     @OneToMany(mappedBy="cv")
+    //todo probably you should use Set instead of List
+    // due to possible duplicates in lists
     private List<CVactivity> cvActivity;
 
     //@JsonBackReference
@@ -59,6 +66,9 @@ public class CV {
     @JoinColumn(name="template_id")
     private Template template;
 
+    //todo @manytomany probably is not the best choice
+    // see hibernate docs
+    //https://docs.jboss.org/hibernate/orm/current/userguide/html_single/Hibernate_User_Guide.html
     @ManyToMany
     @JoinTable(
             name="cv_lang",

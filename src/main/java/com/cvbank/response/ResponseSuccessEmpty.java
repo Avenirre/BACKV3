@@ -9,6 +9,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=true)
 public class ResponseSuccessEmpty extends Response {
 
+    //todo it's not nessassary to set data to null due to it is already null
+    // when you create an object of the ResponseSuccessEmpty class
     public Object data = null;
 
     public ResponseSuccessEmpty() {

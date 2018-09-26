@@ -11,6 +11,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper=true)
 public class ResponseSuccessList extends Response {
 
+    //todo you should always use typized collections like List<SomeClass>
     private List data;
 
     public ResponseSuccessList(List data) {

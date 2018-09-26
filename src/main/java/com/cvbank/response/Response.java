@@ -31,6 +31,8 @@ public class Response {
     protected String timeStamp() {
         Date d1 = new Date();
         SimpleDateFormat df = new SimpleDateFormat("MM/dd/YYYY HH:mm:ss");
+        //todo it's not nessassary to declare a local variable here
+        // it can be just return df.format(d1);
         String formattedDate = df.format(d1);
         return formattedDate;
     }

@@ -28,6 +28,7 @@ import javax.validation.constraints.Size;
 public class Profile {
 
 
+    // todo it's better to create a separate package for enums
     public enum Type {
         CANDIDATE, COMPANY
     }
@@ -57,6 +58,7 @@ public class Profile {
     @Size(max = 100)
     private String usertype;
 
+    //todo maybe the better way is to introduce a separate  Address class?
     private String phone;
     private String lastName;
     private String firstName;

@@ -10,7 +10,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+// todo probably should be moved to the service package
+// @Transactional can be also placed on the "class" level
+// if all of class' methods should be transactional
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
