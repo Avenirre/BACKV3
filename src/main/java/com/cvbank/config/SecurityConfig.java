@@ -63,6 +63,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .cors()
                     .and()
+                //todo as far as I know its a bad idea to disable csrf
+                // but it's a tricky to push to work your app if it enable
                 .csrf()
                     .disable()
                 .exceptionHandling()

@@ -53,7 +53,7 @@ public class CV {
 	private Integer salaryTillPreference;
 
     //@JsonBackReference
-    @OneToMany(mappedBy="cv")
+    @OneToMany(mappedBy="cv"/*, cascade = CascadeType.ALL*/)
     //todo probably you should use Set instead of List
     // due to possible duplicates in lists
     private List<CVactivity> cvActivity;

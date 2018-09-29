@@ -42,7 +42,7 @@ public class CVRestController {
     @Autowired
     private SkillsRepository skillsRepository;
 
-    // it's better to create a separate util class
+    // todo it's better to create a separate util class
     // and put it there
     public static <T> List<T> toList(Optional<T> option) {
         if (option.isPresent())
@@ -95,6 +95,14 @@ public class CVRestController {
 
         CVRepository.save(newCv);
 
+        // todo you can use special hibernate features for that
+        // as far as I understood activities, education and templates
+        //is non-independent entities and they are bounded to CV entity
+        // in that case you case declare special annotation on the
+        // CV class, for example:
+        // @OneToMany(mappedBy="cv"/*, cascade = CascadeType.ALL*/)
+        // so when you save the CV object list of activities will save automatically
+        // and you don't have to manually call cvActivityRepository.save(cvAct);
         List<CVactivity> cvActivity = cv.getCvActivity();
         for (CVactivity cvAct : cvActivity) {
             cvAct.setId(null);
@@ -128,7 +136,10 @@ public class CVRestController {
         return new ResponseEntity(new ResponseSuccessObject(cvResponse.get()), HttpStatus.CREATED);
     }
 
-
+    // todo for all these methods is better to create services and
+    // use repository methods inside them. Here, in the controllers
+    // you can just import the services and use them instead of using repositories
+    // it can reduce the lines of code and transfer bisiness logic to one place
 
     @GetMapping("/cv/{id}")
     public ResponseEntity getCV(@PathVariable Long id) {

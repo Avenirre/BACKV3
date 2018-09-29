@@ -31,7 +31,9 @@ public class CVSearchController {
         int sallary = 10000;
         String position = "";
 
+        // todo it's to replace it in the DAO/repository level of the application
         Query result = em.createNativeQuery("SELECT * FROM cv");
+        //todo java naming convention is broken here ;)
         List<CV> cv_list_result = result.getResultList();
 
         ResponseSuccessList response = new ResponseSuccessList(cv_list_result);
